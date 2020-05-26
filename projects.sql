@@ -57,7 +57,7 @@ CREATE TABLE Employees
  CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID)
  );
 
--- Is there issue with employees table? STh wrong
+-- Is there issue with employees table? STh wrong cannot be create in APEX the Employees table 
 
 
 CREATE TABLE ORDERDETAILS 
@@ -91,14 +91,14 @@ SHIPPOSTALCODE VARCHAR2(10),
 SHIPCOUNTRY VARCHAR2(15),
 CONSTRAINT ORDERS_ORDERID_pk PRIMARY KEY (ORDERID)
 );
-
+-- STh wrong cannot be create in APEX the Orders table 
 
 
 
 CREATE TABLE Products
 (
-ProductID NUMBER(22,0), 
-ProductName VARCHAR2(40), 
+ProductID NUMBER(22,0) NOT NULL, 
+ProductName VARCHAR2(40) NOT NULL, 
 SupplierID NUMBER(22,0), 
 CategoryID NUMBER(22,0), 
 QuantityPerUnit VARCHAR2(20), 
@@ -106,7 +106,7 @@ UnitPrice NUMBER(22,0),
 UnitsInStock NUMBER(22,0), 
 UnitsOnOrder NUMBER(22,0), 
 ReorderLevel NUMBER(22,0), 
-Discontinued NUMBER(22,0),
+Discontinued NUMBER(22,0) NOT NULL,
 CONSTRAINT Products_ProductID_pk PRIMARY KEY (ProductID)
 )
 
@@ -114,6 +114,45 @@ CONSTRAINT Products_ProductID_pk PRIMARY KEY (ProductID)
 
 
 
+
+CREATE TABLE Suppliers
+(
+SupplierID NUMBER(22,0) NOT NULL,
+CompanyName VARCHAR2(40) NOT NULL,
+ContactName VARCHAR2(30),
+ContactTitle VARCHAR2(30),
+Address VARCHAR2(60), 
+City VARCHAR2(15), 
+Region VARCHAR2(15), 
+PostalCode VARCHAR2(10),
+Country VARCHAR2(15), 
+Phone VARCHAR2(24), 
+Fax VARCHAR2(24), 
+HomePage VARCHAR2(200),
+CONSTRAINT Suppliers_SupplierID_pk PRIMARY KEY (SupplierID)
+);
+
+
+
+
+
+CREATE TABLE Shippers
+(
+ShipperID NUMBER(22,0) NOT NULL,
+CompanyName VARCHAR2(40) NOT NULL,
+Phone VARCHAR2(24),
+CONSTRAINT Shippers_ShipperID_pk PRIMARY KEY (ShipperID)
+);
+
+
+
+
+
+
+
+
+
+-- Orders n Employees tables cannot get created some problems with the date and fix the precision with the Scale for the numbers 
 
 
 

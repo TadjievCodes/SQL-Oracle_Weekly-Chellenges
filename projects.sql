@@ -57,7 +57,7 @@ CREATE TABLE Employees
  CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID)
  );
 
--- Is there issue with employees table? STh wrong cannot be create in APEX the Employees table 
+--  APEX the Employees table created
 
 
 CREATE TABLE ORDERDETAILS 
@@ -76,7 +76,7 @@ CREATE TABLE ORDERS
 (
 ORDERID NUMBER(8,0) NOT NULL, 
 CUSTOMERID CHAR(5), 
-EMPLOYEEID NUMBER(22,0), 
+EMPLOYEEID NUMBER, 
 TERRITORYID VARCHAR2(20), 
 ORDERDATE   DATE NULL, 
 REQUIREDDATE   DATE NULL, 
@@ -91,7 +91,7 @@ SHIPPOSTALCODE VARCHAR2(10),
 SHIPCOUNTRY VARCHAR2(15),
 CONSTRAINT ORDERS_ORDERID_pk PRIMARY KEY (ORDERID)
 );
--- STh wrong cannot be create in APEX the Orders table 
+-- created in APEX the Orders table with EMPLOYEEID NUMBER() ALl fine just typed NUMBER
 
 
 

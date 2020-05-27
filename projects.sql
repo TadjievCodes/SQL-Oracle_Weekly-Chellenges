@@ -1,3 +1,19 @@
+--- Project's tables for SQL Database
+--- characters always set to 22 by default
+
+DROP TABLE Categories CASCADE CONSTRAINTS;
+DROP TABLE CUSTOMERS CASCADE CONSTRAINTS;
+DROP TABLE Employees CASCADE CONSTRAINTS;
+DROP TABLE ORDERDETAILS CASCADE CONSTRAINTS;
+DROP TABLE ORDERS CASCADE CONSTRAINTS;
+DROP TABLE Products CASCADE CONSTRAINTS;
+DROP TABLE Suppliers CASCADE CONSTRAINTS;
+DROP TABLE Shippers CASCADE CONSTRAINTS;
+
+
+
+
+
 CREATE TABLE Categories 
 (
 CategoryID NUMBER(8,0) NOT NULL, 
@@ -7,11 +23,8 @@ Description  VARCHAR2(300),
 CONSTRAINT Categories_CategoryID_pk PRIMARY KEY (CategoryID)
 ); 
 
--- How to set the precison into 6 
-/*
-ALTER TABLE Categories ALTER COLUMN CategoryCode decimal(6,0);
-CategoryCode DECIMAL(6,0);
-*/
+
+
 
 
  CREATE TABLE CUSTOMERS 
@@ -31,8 +44,9 @@ CategoryCode DECIMAL(6,0);
  CONSTRAINT CUSTOMERS_CUSTOMERID_pk PRIMARY KEY (CUSTOMERID)
  ); 
 
--- tHIS TABLE IS READY CUSTOMERS
--- characters always set to 22 by default
+
+
+
 
 CREATE TABLE Employees
 (
@@ -57,7 +71,7 @@ CREATE TABLE Employees
  CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID)
  );
 
---  APEX the Employees table created
+
 
 
 CREATE TABLE ORDERDETAILS 
@@ -67,8 +81,11 @@ PRODUCTID  NUMBER(8,0) NOT NULL,
 UNITPRICE  NUMBER(8,2) NOT NULL, 
 QUANTITY  NUMBER(6,0) NOT NULL,
 DISCOUNT  NUMBER(2,2) NOT NULL,
-CONSTRAINT ORDERDETAILS_ORDERID_pk PRIMARY KEY (ORDERID)
+CONSTRAINT ORDERDETAILS_ORDERID_PRODUCTID_pk PRIMARY KEY (ORDERID, PRODUCTID)
 );
+
+
+
 
 
 
@@ -91,7 +108,7 @@ SHIPPOSTALCODE VARCHAR2(10),
 SHIPCOUNTRY VARCHAR2(15),
 CONSTRAINT ORDERS_ORDERID_pk PRIMARY KEY (ORDERID)
 );
--- created in APEX the Orders table with EMPLOYEEID NUMBER() ALl fine just typed NUMBER
+
 
 
 
@@ -147,12 +164,6 @@ CONSTRAINT Shippers_ShipperID_pk PRIMARY KEY (ShipperID)
 
 
 
-
-
-
-
-
--- Orders n Employees tables cannot get created some problems with the date and fix the precision with the Scale for the numbers 
 
 
 

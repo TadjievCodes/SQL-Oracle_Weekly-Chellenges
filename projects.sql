@@ -125,7 +125,7 @@ UnitsOnOrder NUMBER(6,0),
 ReorderLevel NUMBER(6,0), 
 Discontinued NUMBER(1,0) NOT NULL,
 CONSTRAINT Products_ProductID_pk PRIMARY KEY (ProductID)
-)
+);
 
 
 

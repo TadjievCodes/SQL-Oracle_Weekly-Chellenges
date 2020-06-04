@@ -165,7 +165,11 @@ UnitsInStock NUMBER(6,0),
 UnitsOnOrder NUMBER(6,0), 
 ReorderLevel NUMBER(6,0), 
 Discontinued NUMBER(1,0) NOT NULL,
-CONSTRAINT Products_ProductID_pk PRIMARY KEY (ProductID)
+CONSTRAINT Products_ProductID_pk PRIMARY KEY (ProductID),
+CONSTRAINT  Products_UnitPrice_CK CHECK(UnitPrice >= 0),
+CONSTRAINT  Products_ReorderLevel_CK CHECK(ReorderLevel >= 0),
+CONSTRAINT  Products_UnitsInStock_CK CHECK(UnitsInStock >= 0),
+CONSTRAINT  Products_UnitsOnOrder_CK CHECK(UnitsOnOrder >= 0)
 );
 
 

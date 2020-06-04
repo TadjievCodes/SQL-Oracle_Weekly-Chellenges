@@ -108,10 +108,11 @@ CONSTRAINT Suppliers_SupplierID_pk PRIMARY KEY (SupplierID)
 CREATE TABLE Categories 
 (
 CategoryID NUMBER(8,0) NOT NULL, 
-CategoryName VARCHAR2(15), 
+CategoryName VARCHAR2(15) NOT NULL, 
 CategoryCode NUMBER(6,0) NULL, 
 Description  VARCHAR2(300),
-CONSTRAINT Categories_CategoryID_pk PRIMARY KEY (CategoryID)
+CONSTRAINT Categories_CategoryID_pk PRIMARY KEY (CategoryID),
+CONSTRAINT Categories_CategoryCode_UK UNIQUE(CategoryCode)
 ); 
 
 

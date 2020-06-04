@@ -63,9 +63,11 @@ CREATE TABLE Employees
  PhotoPath VARCHAR2(255),
  Sin CHAR(9) NULL,
  CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID),
- CONSTRAINT Employees_Sin_UK UNIQUE(Sin)
+ CONSTRAINT Employees_Sin_UK UNIQUE(Sin),
+ CONSTRAINT Employees_Employees_fk FOREIGN KEY(EmployeeID) REFERENCES Employees(EmployeeID)
  );
 
+ -- AM I CONNECTING THE TABLE CORRECTLY TO ITSELF AS NEEDED? NO ERRORS ON APEX AT LEAST
 
 
 
@@ -171,9 +173,13 @@ CONSTRAINT Products_ProductID_pk PRIMARY KEY (ProductID),
 CONSTRAINT  Products_UnitPrice_CK CHECK(UnitPrice >= 0),
 CONSTRAINT  Products_ReorderLevel_CK CHECK(ReorderLevel >= 0),
 CONSTRAINT  Products_UnitsInStock_CK CHECK(UnitsInStock >= 0),
-CONSTRAINT  Products_UnitsOnOrder_CK CHECK(UnitsOnOrder >= 0)
+CONSTRAINT  Products_UnitsOnOrder_CK CHECK(UnitsOnOrder >= 0),
+CONSTRAINT Products_Suppliers_fk FOREIGN KEY(SupplierID) REFERENCES Suppliers(SupplierID),
+CONSTRAINT Products_Categories_fk FOREIGN KEY(CategoryID) REFERENCES Categories(CategoryID)
 );
 
+
+--- Are my Foreign Keys correct?
 
 
 
@@ -193,13 +199,16 @@ DISCOUNT  NUMBER(2,2) NOT NULL,
 CONSTRAINT ORDERDETAILS_ORDERID_PRODUCTID_pk PRIMARY KEY (ORDERID, PRODUCTID),
 CONSTRAINT  ORDERDETAILS_DISCOUNT_CK CHECK(DISCOUNT >= 0 AND DISCOUNT <= 1),
 CONSTRAINT  ORDERDETAILS_QUANTITY_CK CHECK(QUANTITY > 0),
-CONSTRAINT  ORDERDETAILS_UNITPRICE_CK CHECK(UNITPRICE >= 0)
+CONSTRAINT  ORDERDETAILS_UNITPRICE_CK CHECK(UNITPRICE >= 0),
+CONSTRAINT ORDERDETAILS_Products_fk FOREIGN KEY(PRODUCTID) REFERENCES Products(ProductID),
+CONSTRAINT ORDERDETAILS_ORDERS_fk FOREIGN KEY(ORDERID) REFERENCES ORDERS(ORDERID),
 );
 
 --- CONSTRAINT  ORDERDETAILS_DISCOUNT_CK CHECK(DISCOUNT >= 0 AND DISCOUNT <= 1),
 --- OrderDetails
 --  Check constraints
 -- ▪ Discount greater than or equal to 0 and less than or equal 1 (used as a percentage, .05 = 5%)
+-- Sth is wrong with it? Can't seem to figure that out right??? 
 
 
 

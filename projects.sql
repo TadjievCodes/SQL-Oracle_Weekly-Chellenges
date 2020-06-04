@@ -62,7 +62,8 @@ CREATE TABLE Employees
  ReportsTo NUMBER(8,0),
  PhotoPath VARCHAR2(255),
  Sin CHAR(9) NULL,
- CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID)
+ CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID),
+ CONSTRAINT Employees_Sin_UK UNIQUE(Sin)
  );
 
 

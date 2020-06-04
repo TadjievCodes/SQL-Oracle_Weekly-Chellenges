@@ -64,7 +64,7 @@ CREATE TABLE Employees
  Sin CHAR(9) NULL,
  CONSTRAINT Employees_EmployeeID_pk PRIMARY KEY (EmployeeID),
  CONSTRAINT Employees_Sin_UK UNIQUE(Sin),
- CONSTRAINT Employees_Employees_fk FOREIGN KEY(EmployeeID) REFERENCES Employees(EmployeeID)
+ CONSTRAINT Employees_Employees_EmployeeID_fk FOREIGN KEY(EmployeeID) REFERENCES Employees(EmployeeID)
  );
 
  -- AM I CONNECTING THE TABLE CORRECTLY TO ITSELF AS NEEDED? NO ERRORS ON APEX AT LEAST

@@ -152,7 +152,7 @@ CONSTRAINT ORDERS_CUSTOMERS_CUSTOMERID_fk FOREIGN KEY(CUSTOMERID) REFERENCES CUS
 CONSTRAINT ORDERS_Shippers_ShipperID_fk FOREIGN KEY(SHIPVIA) REFERENCES Shippers(ShipperID)
 );
 
-
+--- Are foreign keys all correct?
 
 
 
@@ -182,7 +182,6 @@ CONSTRAINT Products_Categories_CategoryID_fk FOREIGN KEY(CategoryID) REFERENCES 
 );
 
 
---- Are my Foreign Keys correct?
 
 
 
@@ -207,11 +206,6 @@ CONSTRAINT ORDERDETAILS_Products_ProductID_fk FOREIGN KEY(PRODUCTID) REFERENCES 
 CONSTRAINT ORDERDETAILS_ORDERS_ORDERID_fk FOREIGN KEY(ORDERID) REFERENCES ORDERS(ORDERID)
 );
 
---- CONSTRAINT  ORDERDETAILS_DISCOUNT_CK CHECK(DISCOUNT >= 0 AND DISCOUNT <= 1),
---- OrderDetails
---  Check constraints
--- ▪ Discount greater than or equal to 0 and less than or equal 1 (used as a percentage, .05 = 5%)
--- Sth is wrong with it? Can't seem to figure that out right??? 
 
 
 

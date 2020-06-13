@@ -12,3 +12,9 @@ DELETE FROM actors WHERE name LIKE "Yuri%" OR name LIKE "Walter%" OR name LIKE "
 
 
 
+-- Remove all Sci Fi movies.
+
+DELETE FROM movies
+WHERE genre = 'Sci Fi';
+
+

@@ -1,6 +1,6 @@
 --- DML - Data Manipulation Language - the subset of the SQL programming language that deals with CRUD operations.
 
-
+-- TRANSACTION IS A SAFER WAY TO PERFORM COMPLEX FEW LINES OF SQL STATEMENTS
 
 --An update statement for specific rows:
 

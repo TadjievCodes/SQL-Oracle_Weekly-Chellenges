@@ -15,9 +15,14 @@ SELECT firstname || ', ' ||  lastname AS "Full Name"
 FROM customers;
 
 -- If there's no space in the value of AS Alias then no need for the string ""
+
 SELECT firstname || ', ' ||  lastname AS FullName
 FROM customers;
 
+-- Complex example where we display nam, retailprice, TAX and the Full Price on one row
+
+SELECT name, retailprice, retailprice * .13  AS Tax, retailprice * 1.13 AS "Full Price"
+FROM products;
 
 
 

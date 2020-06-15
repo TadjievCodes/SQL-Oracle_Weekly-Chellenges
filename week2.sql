@@ -42,6 +42,18 @@ SELECT *
 FROM vendors
 WHERE Province IN ('ON', 'AB', 'BC');
 
+-- pattern matching, find all lastnames starting with letter P
+-- We can do that with the wildcard % character
+
+SELECT *
+FROM customers
+WHERE lastname LIKE ('P%');
+
+-- pattern matching, select the second letter which is e and leave the space of the first letter with _ underscore
+
+SELECT *
+FROM customers
+WHERE firstname LIKE ('_e%');
 
 
 

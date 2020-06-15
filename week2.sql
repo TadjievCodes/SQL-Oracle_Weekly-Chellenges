@@ -28,6 +28,11 @@ FROM orders
 WHERE shipdate > '2019-12-10';
 
 
+-- Between AND Operator which selects the range usually between the dates
+
+SELECT * 
+FROM orders 
+WHERE orderdate BETWEEN '2019-09-01' AND '2019-09-07';
 
 
 
@@ -40,13 +45,23 @@ WHERE shipdate > '2019-12-10';
 
 
 
---1. Find all customer names (create a concatenated field for alias Customer Name as seen below), street address aliased as Address, city and province for customers that live on a street that ends with the word Ave and whose last name has the letter e as the 2nd character and also ends in the letter s. 
 
---2. List products that end in the word ‘RH’ or ‘LH’ and whose product Id is less than the value of the ‘QtyOnHand’ field. Sort this list by QtyOnHand lowest to highest: 
 
---3. Without using the logical operator OR, list all vendors from Ontario, Alberta and BC who are not in the 416 and 780 area codes. Also, sort this list by city within province: 
 
---4. List all orders created in the last full week of September 2019 (September 22nd – September 28th inclusive), that were sold either by employee 604, employee 606 or employee 608 and sort it by employee Id (partial list only shown) 
+
+
+--1. Find all customer names (create a concatenated field for alias Customer Name as seen below), 
+-- street address aliased as Address, city and province for customers that live on a street that ends with the word Ave and
+-- whose last name has the letter e as the 2nd character and also ends in the letter s. 
+
+--2. List products that end in the word ‘RH’ or ‘LH’ and whose product Id is less than the value of the ‘QtyOnHand’ field.
+-- Sort this list by QtyOnHand lowest to highest: 
+
+--3. Without using the logical operator OR, list all vendors from Ontario, Alberta and BC who are not in the 416 and 780 area codes. 
+-- Also, sort this list by city within province: 
+
+--4. List all orders created in the last full week of September 2019 (September 22nd – September 28th inclusive), 
+-- that were sold either by employee 604, employee 606 or employee 608 and sort it by employee Id (partial list only shown) 
 
 --Question 1)
 

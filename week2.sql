@@ -1,4 +1,24 @@
 
+-- Examples of Week 2
+
+SELECT firstname, lastname FROM customers WHERE lastname = 'Peterson';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --1. Find all customer names (create a concatenated field for alias Customer Name as seen below), street address aliased as Address, city and province for customers that live on a street that ends with the word Ave and whose last name has the letter e as the 2nd character and also ends in the letter s. 
 
 --2. List products that end in the word ‘RH’ or ‘LH’ and whose product Id is less than the value of the ‘QtyOnHand’ field. Sort this list by QtyOnHand lowest to highest: 

@@ -29,12 +29,18 @@ WHERE shipdate > '2019-12-10';
 
 
 -- Between AND Operator which selects the range usually between the dates
-
+-- Plus, Between is inclusive the date it starts and where it ends
 SELECT * 
 FROM orders 
 WHERE orderdate BETWEEN '2019-09-01' AND '2019-09-07';
 
 
+-- If you have more than 2 OR conditions than just use IN clause which is way more efficient
+-- It saves you a lot of hassle and easier to read
+
+SELECT *
+FROM vendors
+WHERE Province IN ('ON', 'AB', 'BC');
 
 
 

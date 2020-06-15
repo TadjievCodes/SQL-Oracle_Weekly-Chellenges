@@ -8,7 +8,15 @@ SELECT * FROM customers;
 
 
 -- Notice 'AB' inside the single quotes in uppercase letters as string data is case sensitive in SQL plus mostly use '' single quotes as a rule of thumb
+-- If we make it 'ab' it would be an error. So the data of the string should match the actual data in the tables
 SELECT firstname, lastname, province FROM customers WHERE province = 'AB';
+
+
+-- So the data should match with the format in Apex Oracle... For that just set the date format in preferences section of Oracle 
+SELECT * 
+FROM orders 
+WHERE orderdate = '2019-09-06';
+
 
 
 

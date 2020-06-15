@@ -1,3 +1,22 @@
+-- Practice week 1
+
+SELECT * FROM customers;
+
+SELECT id,city FROM customers;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --Question 1)
 
 SELECT name AS Vendor, streetaddress || ', ' ||  city  || ', ' ||  province  || ', ' ||  postalcode AS "Vendor Address" FROM vendors ORDER BY province, city DESC, province ASC;

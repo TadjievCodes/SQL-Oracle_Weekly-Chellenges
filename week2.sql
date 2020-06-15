@@ -63,6 +63,29 @@ WHERE firstname LIKE ('__e%');
 
 
 
+-- IS NULL  USAGE AND IS NOT NULL CLAUSES OF SQL
+
+
+SELECT name, weburl
+FROM vendors
+WHERE weburl IS NULL;
+
+
+
+SELECT name, weburl
+FROM vendors
+WHERE weburl IS NOT NULL;
+
+
+
+-- Multiple conditions better to wrap the important ones in the brackets to signify the importance of it
+
+SELECT firstname,lastname, province, postalcode FROM customers
+WHERE lastname = 'Peterson'
+AND (Province = 'AB' OR postalcode LIKE 'K%')
+ORDER BY province;
+
+
 
 
 

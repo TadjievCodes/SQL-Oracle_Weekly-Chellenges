@@ -55,6 +55,11 @@ SELECT *
 FROM customers
 WHERE firstname LIKE ('_e%');
 
+-- If we want the first two characters to be empty blank meaning leave them and select who has e as the third letter
+SELECT *
+FROM customers
+WHERE firstname LIKE ('__e%');
+
 
 
 

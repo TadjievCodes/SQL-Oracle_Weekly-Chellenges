@@ -4,7 +4,11 @@
 SELECT firstname, lastname FROM customers WHERE lastname = 'Peterson';
 
 
+SELECT * FROM customers;
 
+
+-- Notice 'AB' inside the single quotes in uppercase letters as string data is case sensitive in SQL plus mostly use '' single quotes as a rule of thumb
+SELECT firstname, lastname, province FROM customers WHERE province = 'AB';
 
 
 

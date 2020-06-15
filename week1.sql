@@ -41,7 +41,9 @@ the start of the output should look like this:
 
 
 
-SELECT name AS Vendor, streetaddress || ', ' ||  city  || ', ' ||  province  || ', ' ||  postalcode AS "Vendor Address" FROM vendors ORDER BY province, city DESC, province ASC;
+SELECT name AS Vendor, streetaddress || ', ' ||  city  || ', ' ||  province  || ', ' ||  postalcode AS "Vendor Address" 
+FROM vendors 
+ORDER BY province, city DESC, province ASC;
 -- Correct
 
 
@@ -54,7 +56,9 @@ and full price (retail price + tax) aliased as Full Price for all products. Sort
 */
 
 
-SELECT name AS "Product Name", categoryid AS Category, retailprice AS MSRP, retailprice * .13 AS Tax, retailprice + (retailprice * .13) AS "Full Price" FROM products ORDER BY 2 DESC, 3;
+SELECT name AS "Product Name", categoryid AS Category, retailprice AS MSRP, retailprice * .13 AS Tax, retailprice + (retailprice * .13) AS "Full Price" 
+FROM products 
+ORDER BY 2 DESC, 3;
 
 
 
@@ -64,7 +68,9 @@ SELECT name AS "Product Name", categoryid AS Category, retailprice AS MSRP, reta
 Create a single column list labelled: Provincial Codes for Customers, and sort the list alphabetically:
 */
 
-SELECT DISTINCT province AS "Provincial Codes For Cutomers" FROM customers ORDER BY province ASC;
+SELECT DISTINCT province AS "Provincial Codes For Cutomers" 
+FROM customers 
+ORDER BY province ASC;
 
 -- Distinct lets us return only the 6 values without repeating ON, BC n other Province codes
 
@@ -74,11 +80,14 @@ SELECT DISTINCT province AS "Provincial Codes For Cutomers" FROM customers ORDER
 --Question 4)
 
 /*
+Return a list of vendor names aliased as Our Vendors, cities aliased as Vendor City and provinces. 
+Sort the list city within province, and list the provinces backwards alphabetically (Z-A)
+*/ 
 
-*/
 
 
-
-SELECT name AS "Our Vendors", city AS"Vendor City", province AS "PROVINCE"  FROM vendors ORDER BY name, province, city DESC;
+SELECT name AS "Our Vendors", city AS"Vendor City", province AS "PROVINCE"  
+FROM vendors 
+ORDER BY name, province, city DESC;
 
 

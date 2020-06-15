@@ -3,7 +3,8 @@
 -- What are all Chevy models?
 --Example 1: 
 --INNER JOIN
-SELECT mk.makename, md.modelname FROM make AS mk
+SELECT mk.makename, md.modelname 
+FROM make AS mk
 INNER JOIN model AS md ON mk.MakeID = md.MakeID
 WHERE makename = "Chevy";
 
@@ -86,7 +87,24 @@ ON patrons.id = loans.patron_id;
 
 --From WEEK 3 material exercises ######################################################################################################################
 
+
+-- The old way of counting the rows in the table with Cartesian method
+
+SELECT COUNT(*) AS "Cartesian" 
+FROM products, categories;
+
+
+
+
+
+
+
+
+
 SELECT COUNT(*) AS "# of products" FROM products;
+
+
+
 
 SELECT categories.description AS "Category", name AS "Product"
 FROM categories, products

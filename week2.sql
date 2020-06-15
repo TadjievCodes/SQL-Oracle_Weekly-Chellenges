@@ -18,6 +18,15 @@ FROM orders
 WHERE orderdate = '2019-09-06';
 
 
+SELECT * 
+FROM vendors
+WHERE province <> 'ON';
+
+
+SELECT * 
+FROM orders
+WHERE shipdate > '2019-12-10';
+
 
 
 

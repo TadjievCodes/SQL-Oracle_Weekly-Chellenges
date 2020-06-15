@@ -5,6 +5,18 @@ SELECT * FROM customers;
 SELECT id,city FROM customers;
 
 
+SELECT DISTINCT province, 'Evan Laursen'
+FROM vendors;
+
+ 
+--- Double Pipe String Concatenation        (Done via Oracle Database but we're using standard SQL)
+
+SELECT firstname || ', ' ||  lastname AS "Full Name"
+FROM customers;
+
+-- If there's no space in the value of AS Alias then no need for the string ""
+SELECT firstname || ', ' ||  lastname AS FullName
+FROM customers;
 
 
 

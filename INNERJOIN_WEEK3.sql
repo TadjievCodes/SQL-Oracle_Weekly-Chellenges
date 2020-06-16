@@ -88,27 +88,34 @@ ON patrons.id = loans.patron_id;
 --From WEEK 3 material exercises ######################################################################################################################
 
 
--- The old way of counting the rows in the table with Cartesian method
-
+-- The old way of counting the rows in the table with Cartesian method query
+-- It basically joins the two tables and returns the data
+-- But it's better to use SQL's INNER JOIN INSTEAD OF THE CARTESIAN QUERY
 SELECT COUNT(*) AS "Cartesian" 
 FROM products, categories;
 
 
+-- CROSS JOIN IS ALMOST THE SAME AS CARTESIAN BUT IT'S JUST AN ORACLE SPECIFIC SYNTAX
+SELECT COUNT(*) AS "Cartesian" 
+FROM products CROSS JOIN categories;
 
 
 
 
-
-
-
+-- And this is the new way of doing that without the Cartesian
 SELECT COUNT(*) AS "# of products" FROM products;
 
 
 
 
+-- This is the old way of joining the tables with the WHERE clause
+
 SELECT categories.description AS "Category", name AS "Product"
 FROM categories, products
 WHERE categories.id = products.categoryid;
+
+
+
 
 
 -- SELECTING CATEGORY'S ID AND CATEGORY'S DESCRIPTION, NAME AND INSTEAD OF WHERE USING ON
@@ -116,16 +123,28 @@ SELECT categories.id, categories.description, name
 FROM categories INNER JOIN products
 ON categories.id = products.categoryid;
 
+
+
+
 --CORRECT WAYW WITH TABLE ALIAS
 SELECT c.id, c.description, name
 FROM categories c INNER JOIN products p
 ON c.id = p.categoryid;
 
 
+
+
+
+
 SELECT c.id, c.description, name
 FROM categories c INNER JOIN products p
 ON c.id = p.categoryid
 AND c.id = 2;
+
+
+
+
+
 
 -- joining 4 tables requires 3 INNER JOINS
 -- IF WERE adding 4 tables then why 3 inner joins as rule of thumb alwayas one lesser clause than the quantity of the tables
@@ -137,6 +156,10 @@ INNER JOIN order_details od
 ON o.id = od.orderid
 INNER JOIN products p
 ON od.productid = p.id;
+
+
+
+
 
 
 -- SELF JOIN EXAMPLE

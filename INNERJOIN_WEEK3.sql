@@ -302,7 +302,8 @@ FROM Customers c
 SELECT DISTINCT p.name AS product, v.id AS Vendorid
 FROM products p 
      INNER JOIN product_vendors pv ON p.id = pv.productid
-     INNER JOIN product_vendors pv2 ON pv.productid = pv2.productid AND pv.vendorid != pv2.vendorid 
+     INNER JOIN product_vendors pv2 ON pv.productid = pv2.productid 
+     AND pv.vendorid != pv2.vendorid 
      INNER JOIN vendors v ON v.id = pv.vendorid
 ORDER BY p.name;
 

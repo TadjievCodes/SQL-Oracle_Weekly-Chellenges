@@ -162,10 +162,11 @@ AND c.id = 2;
 
 
 -- joining 4 tables requires 3 INNER JOINS
--- IF WERE adding 4 tables then why 3 inner joins as rule of thumb alwayas one lesser clause than the quantity of the tables
+-- IF WERE adding 4 tables then why 3 inner joins as a rule of thumb always one lesser clause than the quantity of the tables
 
 SELECT firstName, lastName, name
-FROM customers c INNER JOIN orders o
+FROM customers c 
+INNER JOIN orders o
 ON c.id = o.customerid
 INNER JOIN order_details od
 ON o.id = od.orderid
@@ -177,7 +178,7 @@ ON od.productid = p.id;
 
 
 
--- SELF JOIN EXAMPLE
+-- SELF JOIN EXAMPLE when we're joining to our own table while creating 2 isntances of it with INNER JOIN
 
 SELECT DISTINCT c1.firstname, c1.lastname 
 FROM customers c1

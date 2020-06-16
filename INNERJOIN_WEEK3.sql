@@ -116,19 +116,33 @@ WHERE categories.id = products.categoryid;
 
 
 
-
+-- Now with Inner Joins doing the joins of the Tables
 
 -- SELECTING CATEGORY'S ID AND CATEGORY'S DESCRIPTION, NAME AND INSTEAD OF WHERE USING ON
 SELECT categories.id, categories.description, name
-FROM categories INNER JOIN products
+FROM categories 
+INNER JOIN products
 ON categories.id = products.categoryid;
 
 
 
+-- Another one where we make it equal into 2
+SELECT categories.id, categories.description, name
+FROM categories 
+INNER JOIN products
+ON categories.id = products.categoryid
+AND categories.id = 2;
 
---CORRECT WAYW WITH TABLE ALIAS
+
+
+
+
+
+
+--CORRECT WAY WITH TABLE ALIAS
 SELECT c.id, c.description, name
-FROM categories c INNER JOIN products p
+FROM categories c 
+INNER JOIN products p
 ON c.id = p.categoryid;
 
 
@@ -137,7 +151,8 @@ ON c.id = p.categoryid;
 
 
 SELECT c.id, c.description, name
-FROM categories c INNER JOIN products p
+FROM categories c 
+                 INNER JOIN products p
 ON c.id = p.categoryid
 AND c.id = 2;
 

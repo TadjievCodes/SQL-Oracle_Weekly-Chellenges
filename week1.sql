@@ -43,7 +43,7 @@ the start of the output should look like this:
 
 SELECT name AS Vendor, streetaddress || ', ' ||  city  || ', ' ||  province  || ', ' ||  postalcode AS "Vendor Address" 
 FROM vendors 
-ORDER BY province, city DESC, province ASC;
+ORDER BY province, city DESC, province ASC; 
 -- Correct
 
 
@@ -68,7 +68,7 @@ ORDER BY 2 DESC, 3;
 Create a single column list labelled: Provincial Codes for Customers, and sort the list alphabetically:
 */
 
-SELECT DISTINCT province AS "Provincial Codes For Cutomers" 
+SELECT DISTINCT province AS "Provincial Codes For Customers" 
 FROM customers 
 ORDER BY province ASC;
 

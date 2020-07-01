@@ -3,7 +3,8 @@
 -- Examples of Adding a Row to a Table
 
 --- INSERT INTO <table> VALUES (<value 1>, <value 2>...);
-INSERT INTO books VALUES (16, "1984", "George Orwell", "Fiction", 1949);
+INSERT INTO books 
+VALUES (16, "1984", "George Orwell", "Fiction", 1949);
 
 --If we enter NULL it'll automatically generate the correct id number
 INSERT INTO books VALUES (NULL, "1984", "George Orwell", "Fiction", 1949);
@@ -50,8 +51,12 @@ CREATE TABLE test_customer (Id NUMBER(6,0), Name VARCHAR2(20));
 -- VARCHAR2 lets us specify how many chracters letters it can have
 
 
-INSERT INTO test_Customer (Id, Name) VALUES (100,'SMITH');
-INSERT INTO test_Customer (Id, Name) VALUES (101,'JONES');
+INSERT INTO test_Customer (Id, Name) 
+VALUES (100,'SMITH');
+
+
+INSERT INTO test_Customer (Id, Name) 
+VALUES (101,'JONES');
 
 -- Creating a table according to the properties of the existing table
 CREATE TABLE cust_marketing AS 

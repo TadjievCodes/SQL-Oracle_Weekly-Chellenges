@@ -88,8 +88,12 @@ ORDER BY province;
 
 
 
+-- if the letter or word starting with P then 
+   WHERE lastname LIKE ('P%');
 
+   --A And if it ends with P then
 
+   WHERE lastname LIKE ('%P');
 
 
 
@@ -111,8 +115,14 @@ ORDER BY province;
 
 --Question 1)
 
-SELECT id AS ID, firstname || ', ' ||  lastname AS "Customer Name", streetaddress AS "Address", city AS "City", province AS "Province" FROM customers WHERE streetaddress LIKE '%Ave' AND lastname LIKE '_e%s';
-SELECT id AS ID, firstname || ', ' ||  lastname AS "Customer Name", streetaddress AS "Address", city AS "City", province AS "Province" FROM customers WHERE streetaddress LIKE '%Ave' AND firstname LIKE '_e%s';
+SELECT id AS ID, firstname || ', ' ||  lastname AS "Customer Name", streetaddress AS "Address", city AS "City", province AS "Province" 
+FROM customers 
+WHERE streetaddress LIKE '%Ave' AND lastname LIKE '_e%s';
+
+
+SELECT id AS ID, firstname || ', ' ||  lastname AS "Customer Name", streetaddress AS "Address", city AS "City", province AS "Province" 
+FROM customers 
+WHERE streetaddress LIKE '%Ave' AND firstname LIKE '_e%s';
 
 -- Correct FULLY and ending with “s” works as well plus 2nd character as “e”
 -- Question 2)

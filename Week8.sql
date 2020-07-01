@@ -27,6 +27,46 @@ WHERE Id = 609;
 
 UPDATE Employees  SET province = 'ON' WHERE Id > 608;
    
+SELECT * FROM Employees 
+WHERE Id = 608;
+
+
+
+
+
+
+-- one last set, multiple columns, multiple rows 
+
+UPDATE Employees SET Province = 'BC', City = 'Vancouver'
+  Where Id > 608;
+
+
+
+
+
+
+
+
+-- common newbie mistake to delete new rows, So this is a wrong way kind of
+
+DELETE * 
+FROM Employees
+WHERE Id > 608; 
+
+
+
+-- The correct syntax would be without the asterisk * 
+
+DELETE
+FROM Employees
+WHERE Id > 608;
+
+
+
+
+
+
+
 
 
 

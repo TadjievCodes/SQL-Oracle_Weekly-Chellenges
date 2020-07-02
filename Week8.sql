@@ -226,6 +226,7 @@ SELECT * FROM Employees;
 
 -- 11. Add a drop to the script to remove the sequence created in step 2
 
+DROP SEQUENCE Employees_id_seq;
 
-
+-- AND IT WORKS FINE
 

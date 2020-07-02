@@ -135,9 +135,9 @@ FROM Employees;
 --- 2. Create a new SEQUENCE for the Employees table. Have the new sequence start at the next available multiple of 5 and increment by 5’s
 
 
-CREATE SEQUENCE Employees_id_seq
+CREATE SEQUENCE employees_id_seq
 INCREMENT BY 5
-START WITH 5   -- 615 or 5 ???
+START WITH 610   -- Start with 610 as next multiple of 5 after 608 is 610
 NOCACHE
 NOCYCLE;
 
@@ -145,7 +145,7 @@ NOCYCLE;
 -- 3  Add a single SELECT statement to confirm the sequence exists by selecting it from the meta data table USER_SEQUENCES
 
 SELECT sequence_name, min_value, increment_by, last_number
- FROM user_sequences WHERE sequence_name = 'Employees_id_seq';
+ FROM user_sequences WHERE sequence_name = 'employees_id_seq';
 
 
 
@@ -165,7 +165,7 @@ SELECT sequence_name, min_value, increment_by, last_number
  */
 
  INSERT INTO Employees (Id, FirstName, LastName, StreetAddress, City, Province, PostalCode, AreaCode, PhoneNumber, BirthDate)
-VALUES (609, 'Sidney', 'Crosby', '28 Hambury Drive', 'Cole Harbor', 'Nova Scotia', 'B4R', '902', '555-1111', '1987-08-07');
+VALUES (employees_id_seq.nextval, 'Sidney', 'Crosby', '28 Hambury Drive', 'Cole Harbor', 'Nova Scotia', 'B4R', '902', '555-1111', '1987-08-07');
 
 
 
@@ -184,7 +184,7 @@ Add another INSERT statement to add another employee using the following data:
 */
 
 INSERT INTO Employees (Id, FirstName, LastName, StreetAddress, City, Province, PostalCode, AreaCode, PhoneNumber, BirthDate)
-VALUES (614, 'Ron', 'McLean', '231 Maple Ave', 'Oakville', 'Ontario', 'L4X-1L9', '289', '555-1551', '1960-04-12');
+VALUES (employees_id_seq.nextval, 'Ron', 'McLean', '231 Maple Ave', 'Oakville', 'Ontario', 'L4X-1L9', '289', '555-1551', '1960-04-12');
 
 
 

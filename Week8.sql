@@ -230,3 +230,13 @@ DROP SEQUENCE Employees_id_seq;
 
 -- AND IT WORKS FINE
 
+
+-- 12. Repeat the code from the SELECT statement from step 3 showing the meta data again (should be empty)
+
+SELECT sequence_name, min_value, increment_by, last_number
+ FROM user_sequences WHERE sequence_name = 'Employees_id_seq';
+
+-- iT IS EMPTY NOW 
+
+
+-- TO RESTART YOU SHOULD RELOAD THE SCRIPT'S DATA

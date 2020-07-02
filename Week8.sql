@@ -2,6 +2,42 @@
 
 -- Week 8 Examples
 
+
+
+
+
+INSERT INTO Customers (FirstName, LastName, StreetAddress,
+City, Province, PostalCode, AreaCode, PhoneNumber)
+VALUES ('Tom', 'Williams', '127 River Drive',
+'Vancouver', 'BC', 'V5J-1A1', 604, '555-2981');
+
+/*
+Notice there is no PK or value for it specified. When the primary key is artificial (data is not pertinent to the entity), and is only used to make the row unique we let the database generate the key for us. Microsoft uses the term AutoNumber in Access and Identity in
+SQL Server, MySQL uses Auto_Increment. All of these types make this construct a part of the table itself. So if we drop the table the auto generation capability is also removed.
+Oracle, however, takes a different approach to generate key values by using a database object called a SEQUENCE. The sequence stands on its own and is not part of any table. Sequences are used for:
+• Internal control purposes by providing sequential integers for auditing
+• Generating unique value for primary key columns.
+You create a sequence by:
+• Using the CREATE SEQUENCE command
+• Various intervals are allowed – Default: 1
+• You can specify the starting number – Default: 1
+• Can specify MINVALUE for decreasing sequence and MAXVALUE for increasing sequence
+• Numbers can be reused if CYCLE is specified
+• ORDER clause is used in application cluster environment
+• Use CACHE to pre-generate integers – Default: 20
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 INSERT INTO Employees (Id, FirstName, LastName, City, Province, StreetAddress, PostalCode, AreaCode, PhoneNumber, BirthDate)
 VALUES (610, 'Ron', 'McLean', 'Oakville', 'ON', '231 Maple Ave', 'L4X-1L9', '289', '555-1551', '1960-04-12');
 

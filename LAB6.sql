@@ -22,7 +22,7 @@ NOCYCLE;
 -- 3  Add a single SELECT statement to confirm the sequence exists by selecting it from the meta data table USER_SEQUENCES
 
 SELECT sequence_name, min_value, increment_by, last_number
- FROM USER_SEQUENCES WHERE sequence_name = 'Employees_id_seq';
+ FROM USER_SEQUENCES WHERE sequence_name = 'EMPLOYEES_ID_SEQ';
 
 
 
@@ -77,7 +77,8 @@ FROM Employees WHERE Id > 608;
 
 -- 7. Add a single Update statement to the script to update all of the new Employees so that both new employees postal code is (L4X-1L9)
 
-   UPDATE Employees SET PostalCode = 'L4X-1L9';
+   UPDATE Employees SET PostalCode = 'L4X-1L9' 
+   WHERE Id > 608;
 
 
 -- 8. Issue the same select as in step 6 again to show the new postal codes
@@ -111,7 +112,7 @@ DROP SEQUENCE Employees_id_seq;
 -- 12. Repeat the code from the SELECT statement from step 3 showing the meta data again (should be empty)
 
 SELECT sequence_name, min_value, increment_by, last_number
- FROM USER_SEQUENCES WHERE sequence_name = 'Employees_id_seq';
+ FROM USER_SEQUENCES WHERE sequence_name = 'EMPLOYEES_ID_SEQ';
 
 -- iT IS EMPTY NOW 
 

@@ -26,3 +26,25 @@ WHERE Od.OrderID is NULL;
 
 SELECT LOWER(lastname), LOWER(FirstName)
 FROM Customers WHERE LastName = 'Perkins';
+
+
+
+
+-- the upper function
+
+SELECT UPPER(lastname), UPPER(FirstName)
+FROM Customers WHERE LastName = 'Perkins';
+
+
+-- TEST WITH forced uppercase
+-- SO WERE IMMEDIATELY TYPING UPPERCASE LETTERS
+SELECT * FROM  Employees WHERE UPPER(lastname) = 'JAMES';
+
+
+-- AND THE OPPOSITE
+
+SELECT * FROM  Employees WHERE LOWER(lastname) = 'james';
+
+
+
+

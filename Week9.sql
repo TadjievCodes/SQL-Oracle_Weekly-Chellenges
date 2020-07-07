@@ -21,3 +21,8 @@ WHERE Od.OrderID is NULL;
 
 
 
+-- Miscellaneous string function 
+-- the lower function
+
+SELECT LOWER(lastname), LOWER(FirstName)
+FROM Customers WHERE LastName = 'Perkins';

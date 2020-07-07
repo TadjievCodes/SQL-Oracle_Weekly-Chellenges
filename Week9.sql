@@ -7,5 +7,17 @@ FOR order_id_seq;
 
 
 
+-- test out the synonym
+
+SELECT OrderID.nextval FROM dual;
+
+
+-- Ansi outer join using left syntax
+
+SELECT p.id, Name, od.OrderID FROM Products p  
+LEFT OUTER JOIN Order_Details od 
+ON p.Id = od.ProductId
+WHERE Od.OrderID is NULL;
+
 
 

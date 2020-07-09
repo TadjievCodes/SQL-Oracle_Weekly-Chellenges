@@ -103,3 +103,52 @@ FROM contacts;
 -- LPAD and RPAD example
 
 
+SELECT FirstName, LPAD(FirstName,12,'*'), RPAD(FirstName, 12, '*') 
+FROM Customers
+WHERE FirstName like 'J%';
+
+
+-- LTRIm string on the left
+
+SELECT name, streetaddress, LTRIM(streetaddress, 'PO ') AS "BOX"
+FROM vendors
+WHERE streetaddress LIKE 'PO %';
+
+
+-- Replace (string with old string or a new string) > 1 byte
+-- Replace is useful when you're using more than one byte
+
+SELECT streetaddress,
+     REPLACE(streetaddress, 'PO ', 'Post Office ') AS PO
+     FROM vendors
+     WHERE streetaddress LIKE 'PO %';
+
+
+
+-- IF you're using only one byte then there's a better method to do that
+-- use Translate for 1 byte string replacement
+
+
+SELECT name, TRANSLATE(name, ',', '-') AS "No Comma"
+FROM Contacts;
+
+
+-- USE concat as an alternative for || the pipe we used before
+
+SELECT LastName, CONCAT('Customer # ', Id) 
+AS "Number"
+FROM customers 
+WHERE Id BETWEEN 1000 AND 1005; 
+
+
+
+-- Length returns an integer number of the length of the string
+
+SELECT lastname, LENGTH(lastname) AS "# of chars in lastname"
+FROM employees;
+
+
+-- Find Employees born in OCTOBER
+
+
+

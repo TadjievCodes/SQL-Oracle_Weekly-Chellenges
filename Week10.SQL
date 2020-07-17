@@ -166,21 +166,56 @@ FROM products JOIN order_details
 ON order_details.productId = products.Id;
 
 
+-- MIN Function
+
+SELECT TO_CHAR(MIN(retailprice),'$999.99') AS "Smallest Retail Price"
+FROM products;
+
+
+
+-- Group BY Example
+
+/*
+GROUP BY returns one result per group of rows that are processed by a
+query
+• Group functions ignore all NULL values except when using the COUNT(*)
+• You need to use the DISTINCT to eliminate any duplicate values
+*/
+
+
+/*
+When building a query any attributes in the select list that are not
+associated with an aggregate function must be included in a group by
+clause
+*/
+
+
+SELECT name, SUM(qtyordered)
+FROM order_details 
+INNER JOIN products on products.id = order_details.productid
+GROUP BY name;
+
+
+-- another example
+
+SELECT Province, COUNT(*) AS "# of Customers" FROM Customers
+GROUP BY Province
+ORDER BY 2 DESC;
 
 
 
 
+--HAVING clause can be used to filter the result of an aggregate function when grouping information
 
 
+SELECT Country, name, SUM(qtyordered)
+FROM order_details od
+INNER JOIN products I ON od.productID = i.id
+WHERE Province = ‘ON’
+GROUP BY country, name
+HAVING SUM(qtyordered) > 50;
 
-
-
-
-
-
-
-
-
+--• Note: The Having is similar to a where clause but it is applied after the aggregate function takes place
 
 
 

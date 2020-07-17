@@ -63,6 +63,59 @@ ORDER BY 3 DESC;
 
 
 
+/*
+Typically used to convert dates or numbers to a character string
+• Second argument is the format option
+SELECT TO_CHAR(retailprice,'$999.99') FROM products;
+• would result a formatted string $2.99
+SELECT TO_CHAR(SYSDATE, 'yyyy/mm/dd') FROM DUAL
+• would return the string ‘2014/07/08’
+SELECT TO_CHAR(SYSDATE, 'Month DD, YYYY') FROM DUAL;
+• would return ‘July 8, 2014’
+
+*/
+
+
+-- Format dates with To_Char
+
+
+
+SELECT OrderDate, ShipDate,
+TO_CHAR(OrderDate, 'MONTH DD, YYYY') AS "Order Date",
+
+    TO_CHAR(ShipDate, 'MON-DD-RR') AS "Ship Date"
+
+FROM Orders 
+WHERE Id BETWEEN 490 AND 495;
+
+
+
+
+/*
+We use TO_DATE to convert character strings to a date format that is
+acceptable to Oracle
+SELECT TO_DATE('January 15, 1989','Month dd, YYYY') FROM DUAL;
+*/
+
+
+-- Aggregate functions Important part of SQL
+
+/*
+
+There are 5 aggregate functions:
+• SUM – Calculates the total for a column of data
+• MIN – Returns the smallest value for data in a column
+• MAX – Returns the largest value for data in a column
+• AVG – Determines the average for data values within a column of data
+• COUNT – Returns the number of rows returned by the query
+• COUNT(*) or COUNT(order_ID) are both valid
+
+*/
+
+
+
+
+
 
 
 

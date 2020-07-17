@@ -114,6 +114,25 @@ There are 5 aggregate functions:
 
 
 
+-- What profit did we make on order 312?
+
+
+SELECT SUM(retailprice-quotedprice) AS "Total Profit"
+FROM order_details JOIN products ON
+order_details.productId = products.Id 
+WHERE OrderId = 312;
+
+
+
+-- Whats the average discount we put on Hockey Gloves?
+
+SELECT AVG(retailprice-quotedprice) AS "AVG Discount"
+FROM order_details JOIN products ON
+order_details.productId = products.Id 
+WHERE name LIKE '%Gloves';
+
+
+
 
 
 

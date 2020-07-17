@@ -134,6 +134,40 @@ WHERE name LIKE '%Gloves';
 
 
 
+-- AVG embedded into To_Char
+
+
+SELECT TO_CHAR(AVG(retailprice-quotedprice), '$999.99' ) AS "AVG Discount"
+FROM order_details JOIN products ON
+order_details.productId = products.Id 
+WHERE name LIKE '%Gloves';
+
+
+
+
+
+-- Count Rows with Data
+-- How many customers do we have?
+
+SELECT COUNT(*) AS "# of Customers" FROM Customers;
+
+-- OR we could do
+SELECT * FROM Customers;
+
+
+
+
+
+-- MAX
+-- What was the largest discount made on a sale?
+
+SELECT TO_CHAR(MAX(retailprice-quotedprice), '$9,999.99' ) AS "Largest Discount On Sale"
+FROM products JOIN order_details 
+ON order_details.productId = products.Id;
+
+
+
+
 
 
 

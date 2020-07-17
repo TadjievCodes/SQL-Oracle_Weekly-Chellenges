@@ -205,22 +205,33 @@ ORDER BY 2 DESC;
 
 
 
+
+
+
+
 --HAVING clause can be used to filter the result of an aggregate function when grouping information
 
 
 SELECT Country, name, SUM(qtyordered)
 FROM order_details od
 INNER JOIN products I ON od.productID = i.id
-WHERE Province = ‘ON’
+WHERE Province = 'ON'
 GROUP BY country, name
 HAVING SUM(qtyordered) > 50;
 
 --• Note: The Having is similar to a where clause but it is applied after the aggregate function takes place
 
+-- aLSO wHERE CLAUSE CANNOT OPERATE ON THE RESULTS OF AN AGGREGATE FUNCTION, THAT'S WHY, WE'RE USING HAVING CLAUSE HERE
 
 
 
+-- ANOTHER EXAMPLE
 
+
+SELECT Province, COUNT(*) AS "# of Customers" FROM Customers
+GROUP BY Province
+HAVING COUNT(*) > 4
+ORDER BY 2 DESC;
 
 
 

@@ -17,7 +17,77 @@
 SELECT orders.Id, orders.orderdate, orders.shipdate,
   (SELECT lastname FROM customers WHERE 
     customers.id = orders.customerid) AS customer
-FROM customers WHERE orders.shipdate = '2019-10-27';
+FROM orders WHERE orders.shipdate = '2019-10-27';
+
+
+
+
+/*
+*******************************************************************************
+Multiple Row Sub queries (Sets)
+• Return more than one row of results
+• Requires the use of IN, ANY, ALL, or EXISTS operators
+Multiple Row Sub Query in a WHERE Clause – IN Operator
+
+*/
+
+
+
+-- In keyword, what other products were ordered with
+-- an Ash Baseball bat Order 2
+--
+ 
+ SELECT DISTINCT name AS "Products Ordered with Ash Bat"
+  FROM orders JOIN order_details
+  ON orders.id = order_details.OrderId
+  JOIN products ON order_details.ProductId = products.Id 
+  WHERE orders.Id IN
+     (SELECT OrderId FROM order_details
+       WHERE productId = 2)
+AND products.Id <> 2;
+
+
+
+/*
+Exists Operator       ************************************          Exists Operator
+• Determines whether condition “exists” in sub query, “Find all customers who ordered baseball equipment – CategoryId=2”.
+*/
+
+SELECT Customers.Id
+      Customers.FirstName,
+      Customers.LastName
+FROM Customers     
+WHERE EXISTS
+  (SELECT * FROM Orders INNER JOiN 
+     Order_Details ON Orders.Id = Order_Details.OrderId
+     INNER JOIN Products ON Products.Id = Order_Details.ProductId 
+      WHERE Products.CategoryId = 2 
+      AND Orders.CustomerId = Customers.Id );
+
+
+
+
+
+
+ -- VIEWS
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -91,7 +161,7 @@ FROM ORDERS
 WHERE ORDERDATE IN (SELECT ORDERDATE FROM ORDERS WHERE ORDERDATE BETWEEN '2018-08-14' AND '2018-08-23');
 
 BEGIN
-dbms_output.put_line('Helly Patel''s Lab 9' || chr(10));
+dbms_output.put_line('Tadjiev Muhammad''s Lab 9' || chr(10));
 dbms_output.put_line(' # ' || '          ' || ' Order Date ' || '          '||' Ship Date '||'          '|| ' Company ' ||chr(10));
 
 OPEN c_cust;
@@ -176,7 +246,7 @@ FROM ORDERS
 WHERE ORDERDATE IN (SELECT ORDERDATE FROM ORDERS WHERE ORDERDATE BETWEEN '2018-08-14' AND '2018-08-23');
 
 BEGIN
-dbms_output.put_line('Helly Patel''s Lab 9' || chr(10));
+dbms_output.put_line('Tadjiev Muhammad''s Lab 9' || chr(10));
 dbms_output.put_line(' # ' || '          ' || ' Order Date ' || '          '||' Ship Date '||'          '|| ' Company ' ||chr(10));
 
 OPEN c_cust;

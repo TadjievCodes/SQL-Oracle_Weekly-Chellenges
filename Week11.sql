@@ -69,9 +69,24 @@ WHERE EXISTS
 
 
 
- -- VIEWS
+ -- VIEWS 
 
-     
+/*
+A view is a way to expose a results table data so that it looks like a real table. They typically serve 2 main purposes:
+1. Simplify having to issue complex queries
+2. Restrict access to certain columns from a table
+Typically, a view is used with read only access, but it can also write data back to the base table(s) it is created from. 
+This class will focus on simple read only views, as they are the ones that you’ll most likely encounter.
+
+*/
+
+
+CREATE VIEW inventory
+AS 
+SELECT Id, name, qtyonhand, retailprice
+   FROM products
+WITH READ ONLY;
+
 
 
 

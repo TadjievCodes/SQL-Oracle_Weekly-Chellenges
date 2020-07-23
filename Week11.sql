@@ -11,6 +11,20 @@
 
 
 
+-- Scalar subquery in the Select Clause
+-- Customer lastnames from October 27th orders
+ 
+SELECT orders.Id, orders.orderdate, orders.shipdate,
+  (SELECT lastname FROM customers WHERE 
+    customers.id = orders.customerid) AS customer
+FROM customers WHERE orders.shipdate = '2019-10-27';
+
+
+
+
+
+
+
 
 
 

@@ -93,9 +93,101 @@ WITH READ ONLY;
 
 
 
+-- see view contents
+
+SELECT * FROM inventory;
 
 
 
+
+
+
+
+
+
+-- The READ ONLY option indicates that we can’t change the base table, without it,
+-- if a change is made to the view (inventory) the base table (products) would also be changed:
+
+-- ensure Read only works
+
+
+UPDATE inventory SET qtyonhand = 0
+WHERE Id = 2;
+
+/*
+Again, a View is treated just like a table, so we can process any of our SELECT clauses against it and all standard
+ functions like the TO_CHAR function work the same as if they were going against a real table.
+*/
+
+
+
+-- a view is treated like a table
+
+SELECT Id, TO_CHAR(retailprice, '$9,999.99') AS "Price"
+FROM Inventory;
+
+
+
+-- We can also create views from more than one table’s columns:
+
+
+
+
+
+
+
+-- view based on two tables
+
+CREATE VIEW CustomerOrders
+AS
+SELECT FirstName, LastName, orders.id, OrderDate 
+ FROM Customers JOIN Orders ON
+ customers.Id = orders.customerId
+ WITH READ ONLY;
+
+
+
+
+
+-- tEST OUT
+
+SELECT * FROM CUSTOMERORDERS;
+
+
+/*
+To remove a view, just drop it like any other database object again with Application Express we need to do these one at a time:
+*/
+
+DROP VIEW INVENTORY;
+
+
+
+
+-- aND ALSO
+
+DROP VIEW CUSTOMERORDERS;
+
+
+
+/* 
+                ************************************       Intro to Oracle PL/SQL        ************************************   
+
+We’re going to enter a different world of SQL now. Oracle provides a way to program SQL using a language known officially
+ as the Procedural Language extension of SQL or more commonly referred to PL/SQL.
+These “procedures” are written as blocks and a block consists of three sections:
+• The Declaration section (optional).
+• The Execution section (mandatory).
+• The Exception Handling (or Error) section (optional).
+Declaration Section:
+The Declaration section of a PL/SQL Block starts with the reserved keyword DECLARE. 
+This section is optional and is used to declare any placeholders like variables, constants…, 
+which are used to manipulate data in the execution section. Placeholders may be any of Variables, 
+Constants and Records, which store data temporarily.
+Execution Section:
+The Execution section of a PL/SQL Block starts with the reserved keyword BEGIN and ends with END. 
+This is a mandatory section and is the section where the program logic is written to perform any task. 
+The programmatic constructs like loops, conditional statement and SQL statements form the part of execution section.
+*/
 
 
 

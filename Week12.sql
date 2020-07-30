@@ -71,11 +71,22 @@ BEGIN
 test_CustOrders;
 END;
 
+-- Exception Handling
 
 
-
-
-
+CREATE OR REPLACE PROCEDURE test_CustOrders (cust_in IN NUMBER) IS
+ order_tot NUMBER := 0;
+BEGIN
+ order_tot :=  CustOrders(cust_in);
+IF order_tot = 0 THEN
+  RAISE NO_DATA_FOUND;
+ELSE 
+  dmbs_output.put_line('Customer ' || cust_in || 'has made ' || order_tot || ' orders.');
+END IF;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+   DBMS_OUTPUT.PUT_LINE('Customer ' || cust_in || ' has no orders.');        
+END;
 
 
 

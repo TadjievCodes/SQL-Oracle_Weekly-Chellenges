@@ -55,6 +55,25 @@ END;
 
 
 
+-- Use of function CustOrders in anonymous procedure
+
+BEGIN
+  dbms_output.put_line('Customer 1001 has made ' || CustOrders || ' orders.');
+END;
+
+
+
+
+
+-- run the procedure
+
+BEGIN
+test_CustOrders;
+END;
+
+
+
+
 
 
 
@@ -71,6 +90,14 @@ END;
 -- Week  12 LAB questions and answers
 
 --====================================================================================================================
+-- Question Number 2
+/*
+A stored procedure called pTopProductForMonth that has one input parameter month that can handle lower and upper case values).a.
+Converts the string parameter to a corresponding month numberb.
+Calls the Q1 function to obtain the product id with the top salesc.Dumps out a heading (include your name) 
+and a line indicating the top product # for the monthd.If an invalid month is passed just print out an error
+*/
+
 
 CREATE OR REPLACE PROCEDURE pTopProductForMonth(okok IN VARCHAR2) IS 
 vari NUMBER(2,0) := 0;
@@ -96,8 +123,8 @@ END CASE;
 
 
 IF vari != 0 THEN
-ans := HP_Function(vari);
-dbms_output.put_line('Lab 10 - Helly Patel');
+ans := topSeller(vari);          
+dbms_output.put_line('Lab 10 - Tadjiev Muhammad');  
 dbms_output.put_line('The top product for '|| okok ||' is product - '|| ans || CHR(10) );
 ELSE
 dbms_output.put_line('Invalid month entered');
@@ -107,13 +134,23 @@ END;
 
 
 
+-- changed the function name from HP_FUNCTION and changed my name
+
+
+
 
 
 
 
 --***************************8888888888888
+-- Question number 1 
+/*
+Create a function called topSeller that receives a month (as a number from1-12) and returns the product Id that has the highest 
+sales (QtyOrdered x QuotedPrice) for the month variable.
+*/
+-- was callled HP_FUNCTION for the name of the function
 
-CREATE OR REPLACE FUNCTION HP_FUNCTION (monthNum IN NUMBER)
+CREATE OR REPLACE FUNCTION topSeller (monthNum IN NUMBER)
 RETURN NUMBER IS
 answer NUMBER(4,0) := 0;
 BEGIN 

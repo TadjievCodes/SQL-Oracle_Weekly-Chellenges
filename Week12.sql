@@ -12,7 +12,18 @@ BEGIN
      RETURN order_total;
      END;            
 
-
+/*
+Lines of Note:
+• Line 1 – names the function CustOrders
+• Line 2 – defines what is to be returned from the function in this case a NUMBER
+• Line 3 – defines a variable called custid that has a NUMBER datatype initialized to an existing customer id
+• Line 4 – defines another numeric variable called order_total initialized to zero
+• Line 6 – places the result from the SELECT in to the order_total variable using the INTO keyword
+• Line 9 – filters the results using the custid variable value
+• Line 10 – returns the variable after it’s been loaded with data
+Looking at the table of differences from above, item 3 suggests we can use our custom function the same way we use other Oracle functions. Let’s test this out using our old friend the DUAL table to test it out.
+We
+*/
 
 
 -- if there are errors do 

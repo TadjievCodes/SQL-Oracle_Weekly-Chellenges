@@ -171,3 +171,46 @@ WHERE (ORDER_DETAILS.QUOTEDPRICE * ORDER_DETAILS.QTYORDERED) = (SELECT MAX(ORDER
 FROM ORDER_DETAILS INNER JOIN ORDERS ON ORDER_DETAILS.ORDERID = ORDERS.ID  WHERE EXTRACT(MONTH FROM ORDERS.ORDERDATE) = monthNum);
 RETURN answer;
 END;
+
+
+
+
+
+
+
+
+
+
+-- Another type of answer for question 2
+
+CREATE OR REPLACE PROCEDURE pTopProductForMonth(ok IN VARCHAR2) IS 
+vari NUMBER(2,0) := 0;
+ans NUMBER(4,0) := 0;
+BEGIN
+
+CASE
+WHEN lower(ok) = 'january' THEN vari := 1;
+WHEN lower(ok) = 'february' THEN vari := 2;
+WHEN lower(ok) = 'march' THEN vari := 3;
+WHEN lower(ok) = 'april' THEN vari := 4;
+WHEN lower(ok) = 'may' THEN vari := 5;
+WHEN lower(ok) = 'june' THEN vari := 6;
+WHEN lower(ok) = 'july' THEN vari := 7;
+WHEN lower(ok) = 'august' THEN vari := 8;
+WHEN lower(ok) = 'september' THEN vari := 9;
+WHEN lower(ok) = 'october' THEN vari := 10;
+WHEN lower(ok) = 'november' THEN vari := 11;
+WHEN lower(ok) = 'december' THEN vari := 12;
+ELSE vari := 0;
+END CASE;
+ 
+
+
+IF vari != 0 THEN
+ans := topSeller(vari);          
+dbms_output.put_line('Lab 10 - Tadjiev Muhammad');  
+dbms_output.put_line('The top product for '|| ok ||' is product - '|| ans || CHR(10) );
+ELSE
+dbms_output.put_line('Invalid month entered');
+END IF;
+END;

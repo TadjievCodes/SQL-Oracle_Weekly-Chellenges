@@ -169,6 +169,16 @@ DROP VIEW CUSTOMERORDERS;
 
 
 
+
+
+
+
+
+
+
+
+
+
 /* 
                 ************************************       Intro to Oracle PL/SQL        ************************************   
 
@@ -193,6 +203,8 @@ The programmatic constructs like loops, conditional statement and SQL statements
 
 
 
+-- usEFUL TO FIND THE ERRORS IF THERE ARE ANY MADE ALONG THE WAY
+SELECT * FROM user_errors;
 
 
 
@@ -202,22 +214,23 @@ The programmatic constructs like loops, conditional statement and SQL statements
 
 
 
-
-
-
+-- Need to use Projects Table for the  LAB of WEEK 11
 
 
 --- Week 11 And LAB 9 Questions and answers
 
 CREATE VIEW Lab9_View
 AS
-SELECT ORDERID, ORDERDATE, SHIPPEDDATE, SHIPNAME AS "COMPANYNAME" 
+SELECT ORDERID, ORDERDATE, SHIPPEDDATE, SHIPNAME AS "COMPANYNAME", SHIPCOUNTRY
 FROM ORDERS 
 WHERE ORDERDATE IN (SELECT ORDERDATE FROM ORDERS WHERE ORDERDATE BETWEEN '2019-08-14' AND '2019-08-23')
 WITH READ ONLY;
 
 
 
+
+-- To test we type 
+SELECT * FROM Lab9_View;
 
 
 
@@ -340,17 +353,17 @@ END;
 
 
 
-
+-- THE CORRECT VERSION OF THE PROCEDURE
 
 CREATE OR REPLACE PROCEDURE p_lab9 IS
-o_id varchar2(20);
+o_id orders.orderid%type;                               --previously o_id varchar2(20);
 o_date ORDERS.ORDERDATE%type;
 s_date ORDERS.SHIPPEDDATE%type;
 company ORDERS.SHIPNAME%type;
 CURSOR c_cust IS
-SELECT ORDERID, ORDERDATE, SHIPPEDDATE, SHIPNAME
-FROM ORDERS 
-WHERE ORDERDATE IN (SELECT ORDERDATE FROM ORDERS WHERE ORDERDATE BETWEEN '2018-08-14' AND '2018-08-23');
+SELECT ORDERID, ORDERDATE, SHIPPEDDATE, SHIPNAME, --SHIPCOUNTRY
+FROM Lab9_View                --When it was from ORDERS it worked right?
+WHERE ORDERDATE IN (SELECT ORDERDATE FROM ORDERS WHERE ORDERDATE BETWEEN '2019-08-14' AND '2019-08-23');
 
 BEGIN
 dbms_output.put_line('Tadjiev Muhammad''s Lab 9' || chr(10));
@@ -365,4 +378,82 @@ dbms_output.put_line(o_id || '          ' ||o_date||'          '||s_date||'     
 END LOOP;
 CLOSE c_cust;
 END;
+
+
+
+
+
+CREATE OR REPLACE PROCEDURE procedurelab9 
+IS
+orderid orders.orderid%type;
+orderdate ORDERS.ORDERDATE%type;
+shippeddate ORDERS.SHIPPEDDATE%type;
+shipname ORDERS.SHIPNAME%type;
+shipcountry orders.shipcountry%type;
+CURSOR c_cust IS
+SELECT ORDERID, ORDERDATE, SHIPPEDDATE, shipname, SHIPCOUNTRY
+FROM lab9 ;
+
+BEGIN
+--dbms_output.put_line('Tadjiev Muhammad''s Lab 9'  chr(10));
+--dbms_output.put_line(' # '  '          '  ' Order Date '  '          '' Ship Date ''          ' ' Company ' 'country'chr(10));
+
+OPEN c_cust;
+LOOP
+FETCH c_cust into orderid, orderdate,shippeddate,shipname,shipcountry;
+
+EXIT WHEN c_cust%notfound;
+dbms_output.put_line(orderid  '          ' orderdate'          'shippeddate'          'shipnameshipcountry);
+END LOOP;
+CLOSE c_cust;
+END;
+OPEN c_cust;
+LOOP
+FETCH c_cust into orderid, orderdate,shippeddate,shipname,shipcountry;
+
+EXIT WHEN c_cust%notfound;
+dbms_output.put_line(orderid  '          ' orderdate'          'shippeddate'          'shipname||shipcountry);
+END LOOP;
+CLOSE c_cust;
+END;
+
+
+
+
+-- new Arjinder's version that is working and that I fixed
+
+
+
+
+
+
+ CREATE OR REPLACE PROCEDURE p_lab9 
+IS
+orderid ORDERS.ORDERID%type;
+orderdate ORDERS.ORDERDATE%type;
+shippeddate ORDERS.SHIPPEDDATE%type;
+shipname ORDERS.SHIPNAME%type;
+shipcountry ORDERS.SHIPCOUNTRY%type;
+CURSOR c_cust IS
+SELECT ORDERID, ORDERDATE, SHIPPEDDATE, SHIPNAME, SHIPCOUNTRY
+FROM Lab9_View;
+
+
+BEGIN
+--dbms_output.put_line('Tadjiev Muhammad''s Lab 9'  chr(10));
+OPEN c_cust;
+LOOP
+FETCH c_cust into orderid, orderdate,shippeddate,shipname,shipcountry;
+
+
+EXIT WHEN c_cust%notfound;
+dbms_output.put_line(orderid  || '          '||orderdate||'          '||shippeddate||'          '||shipname||shipcountry);
+END LOOP;
+CLOSE c_cust;
+END;
+ 
+ 
+
+
+
 

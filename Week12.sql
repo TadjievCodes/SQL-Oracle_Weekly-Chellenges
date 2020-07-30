@@ -34,6 +34,14 @@ SELECT * FROM user_errors;
 
 
 
+-- test our function for customer
+
+
+SELECT CustOrders AS "Total Orders For Customer 1001" FROM DUAL;
+
+
+
+
 
 
 

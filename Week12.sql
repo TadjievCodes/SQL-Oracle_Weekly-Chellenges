@@ -15,6 +15,11 @@ BEGIN
 
 
 
+-- if there are errors do 
+
+SELECT * FROM user_errors;
+
+
 
 
 

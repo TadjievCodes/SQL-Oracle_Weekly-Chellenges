@@ -110,24 +110,24 @@ and a line indicating the top product # for the monthd.If an invalid month is pa
 */
 
 
-CREATE OR REPLACE PROCEDURE pTopProductForMonth(okok IN VARCHAR2) IS 
+CREATE OR REPLACE PROCEDURE pTopProductForMonth(ok IN VARCHAR2) IS 
 vari NUMBER(2,0) := 0;
 ans NUMBER(4,0) := 0;
 BEGIN
 
 CASE
-WHEN lower(okok) = 'january' THEN vari := 1;
-WHEN lower(okok) = 'february' THEN vari := 2;
-WHEN lower(okok) = 'march' THEN vari := 3;
-WHEN lower(okok) = 'april' THEN vari := 4;
-WHEN lower(okok) = 'may' THEN vari := 5;
-WHEN lower(okok) = 'june' THEN vari := 6;
-WHEN lower(okok) = 'july' THEN vari := 7;
-WHEN lower(okok) = 'august' THEN vari := 8;
-WHEN lower(okok) = 'september' THEN vari := 9;
-WHEN lower(okok) = 'october' THEN vari := 10;
-WHEN lower(okok) = 'november' THEN vari := 11;
-WHEN lower(okok) = 'december' THEN vari := 12;
+WHEN lower(ok) = 'january' THEN vari := 1;
+WHEN lower(ok) = 'february' THEN vari := 2;
+WHEN lower(ok) = 'march' THEN vari := 3;
+WHEN lower(ok) = 'april' THEN vari := 4;
+WHEN lower(ok) = 'may' THEN vari := 5;
+WHEN lower(ok) = 'june' THEN vari := 6;
+WHEN lower(ok) = 'july' THEN vari := 7;
+WHEN lower(ok) = 'august' THEN vari := 8;
+WHEN lower(ok) = 'september' THEN vari := 9;
+WHEN lower(ok) = 'october' THEN vari := 10;
+WHEN lower(ok) = 'november' THEN vari := 11;
+WHEN lower(ok) = 'december' THEN vari := 12;
 ELSE vari := 0;
 END CASE;
  
@@ -136,7 +136,7 @@ END CASE;
 IF vari != 0 THEN
 ans := topSeller(vari);          
 dbms_output.put_line('Lab 10 - Tadjiev Muhammad');  
-dbms_output.put_line('The top product for '|| okok ||' is product - '|| ans || CHR(10) );
+dbms_output.put_line('The top product for '|| ok ||' is product - '|| ans || CHR(10) );
 ELSE
 dbms_output.put_line('Invalid month entered');
 END IF;
@@ -177,11 +177,30 @@ END;
 
 
 
+-- Another version of Q1 from Wonder
+
+CREATE OR REPLACE FUNCTION topSeller (monthNum IN NUMBER)
+RETURN NUMBER IS
+answer NUMBER(4) := 0;
+BEGIN 
+SELECT PRODUCTID INTO answer 
+FROM ORDER_DETAILS INNER JOIN ORDERS ON ORDERS.ID = ORDER_DETAILS.ORDERID  
+WHERE EXTRACT(MONTH FROM ORDERS.ORDERDATE) = monthNum
+GROUP BY PRODUCTID
+ORDER BY SUM(ORDER_DETAILS.QTYORDERED * ORDER_DETAILS.QUOTEDPRICE) DESC
+FETCH FIRST ROW ONLY;
+RETURN answer;
+END;
 
 
 
 
--- Another type of answer for question 2
+
+
+
+
+-- wonder's corrected version for q2
+ 
 
 CREATE OR REPLACE PROCEDURE pTopProductForMonth(ok IN VARCHAR2) IS 
 vari NUMBER(2,0) := 0;
@@ -203,14 +222,15 @@ WHEN lower(ok) = 'november' THEN vari := 11;
 WHEN lower(ok) = 'december' THEN vari := 12;
 ELSE vari := 0;
 END CASE;
- 
 
+ans := topSeller(vari);
 
-IF vari != 0 THEN
-ans := topSeller(vari);          
+IF vari != 0 THEN          
 dbms_output.put_line('Lab 10 - Tadjiev Muhammad');  
 dbms_output.put_line('The top product for '|| ok ||' is product - '|| ans || CHR(10) );
 ELSE
-dbms_output.put_line('Invalid month entered');
+RAISE NO_DATA_FOUND;
 END IF;
+EXCEPTION WHEN NO_DATA_FOUND THEN
+dbms_output.put_line('Invalid month entered');
 END;

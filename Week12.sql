@@ -44,6 +44,15 @@ SELECT CustOrders AS "Total Orders For Customer 1001" FROM DUAL;
 
 
 
+-- use of function in regular procedure
+
+ 
+ CREATE OR REPLACE PROCEDURE test_CustOrders IS
+ cust_number NUMBER := 1001;  -- STILL HARDCODED
+BEGIN
+ dbms_output.put_line('Customer ' || cust_number || ' has made ' || CustOrders || ' orders' );
+END; 
+
 
 
 

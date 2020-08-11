@@ -564,3 +564,11 @@ OPEN Wander_lab9;
 -- Close cursor
 CLOSE Wander_lab9;
 END;
+
+
+
+
+
+
+-- This is in order to test out the result after the procedure is created
+BEGIN p_lab9; END

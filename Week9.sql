@@ -204,7 +204,8 @@ Return CompanyName as Company (suppliers table) truncated to 20 characters,
 
 SELECT RPAD(SUBSTR(s.CompanyName,1,20), 20, '.') AS Company, 
 RPAD(SUBSTR(p.ProductName,1,15), 15, ' ') AS Product, 
-LPAD(SUBSTR(p.UNITPRICE,1,7), 7, '*') AS "Padded price" FROM suppliers s
+LPAD(SUBSTR(p.UNITPRICE,1,7), 7, '*') AS "Padded price" 
+FROM suppliers s
 LEFT OUTER JOIN Products p ON s.supplierid = p.supplierid
 WHERE LENGTH(p.UNITPRICE) >= 3
 ORDER BY p.UNITPRICE DESC;
@@ -228,7 +229,9 @@ Return the company name, and a field called "Area Code" for all customers who ha
 
 
 SELECT CompanyName, SUBSTR(Phone,
-INSTR(Phone,'('), INSTR(Phone,')')) AS "Area Code" FROM Customers WHERE Phone LIKE '(%'
+INSTR(Phone,'('), INSTR(Phone,')')) AS "Area Code" 
+FROM Customers 
+WHERE Phone LIKE '(%'
 ORDER BY Phone DESC;
 
 

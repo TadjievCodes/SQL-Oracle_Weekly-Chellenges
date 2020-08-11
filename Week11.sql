@@ -395,8 +395,8 @@ SELECT ORDERID, ORDERDATE, SHIPPEDDATE, shipname, SHIPCOUNTRY
 FROM lab9 ;
 
 BEGIN
---dbms_output.put_line('Tadjiev Muhammad''s Lab 9'  chr(10));
---dbms_output.put_line(' # '  '          '  ' Order Date '  '          '' Ship Date ''          ' ' Company ' 'country'chr(10));
+dbms_output.put_line('Tadjiev Muhammad''s Lab 9'  chr(10));
+dbms_output.put_line(' # '  '          '  ' Order Date '  '          '' Ship Date ''          ' ' Company ' 'country'chr(10));
 
 OPEN c_cust;
 LOOP

@@ -71,7 +71,7 @@ VALUES ('Cobb, Ben, 416-239-3638');
 -- SUBSTR function - string -start -length
 
 SELECT DISTINCT postalcode,
-    SUBSTR(postalcode, 1, 3) AS "1st 3 bytes";
+    SUBSTR(postalcode, 1, 3) AS "1st 3 bytes",
     SUBSTR(postalcode, -3, 3) AS "last 3 bytes"
 FROM customers;
 
@@ -150,7 +150,7 @@ FROM employees;
 
 -- Find Employees born in OCTOBER
 
-SELECT FirstName, lastname, birhtdate
+SELECT FirstName, lastname, birthdate
 FROM employees
 WHERE EXTRACT(Month FROM birthdate) = 10;
 

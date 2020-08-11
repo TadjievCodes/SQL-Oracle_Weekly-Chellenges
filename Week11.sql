@@ -556,7 +556,7 @@ OPEN Wander_lab9;
     -- Retrieve each row from the resultset in a loop
     LOOP
         FETCH Wander_lab9 into o_ID, o_oDate, o_sDate, c_CompanyName, o_shipCountry;
-        -- End of resultset reached
+        -- End of resultset reached    // Exception Hanling kind of here
         EXIT WHEN Wander_lab9%notfound;
         -- Dump out Data
         dbms_output.put_line(o_ID || '   ' ||  o_oDate || '   ' || o_sDate || '   ' || c_CompanyName || '             ' || o_shipCountry);

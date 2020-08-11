@@ -1,6 +1,6 @@
 --.sql//
 
--- Practicum Answers started
+-- Practicum Answers started week 13
 
 
 CREATE OR REPLACE package BODY practicum_pkg AS
@@ -29,4 +29,6 @@ DBMS_OUTPUT.PUT_LINE('Avg. order amount for customer :              ' PRACTICUM_
 
 CLOSE C_PROCEDURE;
 END; 
+
+
 --//

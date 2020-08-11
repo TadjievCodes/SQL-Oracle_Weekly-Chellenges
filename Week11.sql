@@ -388,6 +388,7 @@ IS
 orderid orders.orderid%type;
 orderdate ORDERS.ORDERDATE%type;
 shippeddate ORDERS.SHIPPEDDATE%type;
+ship VARCHAR(20);
 shipname ORDERS.SHIPNAME%type;
 shipcountry orders.shipcountry%type;
 CURSOR c_cust IS
@@ -454,6 +455,72 @@ END;
  
  
 
+-- The correct answers of LAB 9 and Week 11
+
+
+--- Week 11 And LAB 9 Questions and answers
+
+CREATE VIEW Lab9_View
+AS
+SELECT ORDERID, ORDERDATE, SHIPPEDDATE, SHIPNAME AS "COMPANYNAME", SHIPCOUNTRY
+FROM ORDERS 
+WHERE ORDERDATE IN (SELECT ORDERDATE FROM ORDERS WHERE ORDERDATE BETWEEN '2019-08-14' AND '2019-08-23')
+WITH READ ONLY;
 
 
 
+
+
+
+
+
+
+
+
+
+
+-- To test we type 
+SELECT * FROM Lab9_View;
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE OR REPLACE PROCEDURE p_lab9 IS
+o_id orders.orderid%type;
+o_date ORDERS.ORDERDATE%type;
+o_ship VARCHAR(20);
+c_name customers.COMPANYNAME%type;
+c_country customers.country%type;
+
+CURSOR cursor_lab9 IS
+    SELECT ORDERID, ORDERDATE, NVL(SHIPPEDDATE, '    --    '),   RPAD(COMPANYNAME, 20, ' '), COUNTRY
+FROM lab9_View 
+ORDER BY COUNTRY;
+
+
+BEGIN   
+dbms_output.put_line('Tadjiev Muhammad''s Lab 9 - Orders by Country Aug. 14th-23rd' || chr(10));
+dbms_output.put_line('  # ' ||  '    '  ||   ' Order Date ' ||  '   ' || ' Ship Date ' 
+|| '   ' || '    Comnpany'  || '          Country' || chr(10) );
+
+
+OPEN cursor_lab9;
+LOOP
+FETCH cursor_lab9 into o_id, o_date, o_ship, c_name, c_country;
+ EXIT WHEN cursor_lab9%notfound;
+ dbms_output.put_line( o_id || '  ' || o_date || '   ' || o_ship || '   '
+ || c_name || '    '  || c_country);
+
+  END LOOP;
+ CLOSE cursor_lab9;
+END;
+
+BEGIN p_lab9; END

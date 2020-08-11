@@ -160,8 +160,8 @@ SELECT sequence_name, min_value, increment_by, last_number
  INSERT INTO Employees (Id, FirstName, LastName, StreetAddress, City, Province, PostalCode, AreaCode, PhoneNumber, BirthDate)
 VALUES (Employees_id_seq.nextval, 'Sidney', 'Crosby', '28 Hambury Drive', 'Cole Harbor', 'NS', 'B4R', '902', '555-1111', '1987-08-07');
 
-
-
+`````````````````0`
+`10
 
 /* 5. 
 Add another INSERT statement to add another employee using the following data:

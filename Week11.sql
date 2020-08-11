@@ -501,7 +501,7 @@ c_name customers.COMPANYNAME%type;
 c_country customers.country%type;
 
 CURSOR cursor_lab9 IS
-    SELECT ORDERID, ORDERDATE, NVL(SHIPPEDDATE, '    --    '),   RPAD(COMPANYNAME, 20, ' '), COUNTRY
+    SELECT ORDERID, ORDER-DATE, NVL(SHIPPEDDATE, '    --    '),   RPAD(COMPANYNAME, 20, ' '), COUNTRY
 FROM lab9_View 
 ORDER BY COUNTRY;
 

@@ -523,4 +523,44 @@ FETCH cursor_lab9 into o_id, o_date, o_ship, c_name, c_country;
  CLOSE cursor_lab9;
 END;
 
+
+
+-- This is in order to test out the result after the procedure is created
 BEGIN p_lab9; END
+
+
+
+
+
+-- wander's correct version for the procedure
+
+
+
+CREATE OR REPLACE PROCEDURE p_lab9 IS
+-- Declaring variables here
+o_ID     Lab9_View.OrderID%type;
+o_oDate  Lab9_View.OrderDate%type;
+o_sDate  VARCHAR2(10);
+c_CompanyName Lab9_View.CompanyName%type;
+o_shipCountry Lab9_View.ShipCountry%type;
+-- Define cursor for SELECT
+    CURSOR Wander_lab9 IS 
+    SELECT OrderID, OrderDate, NVL(to_char(shippedDate), '    --    '), CompanyName, ShipCountry 
+        FROM Lab9_View;
+-- Execution begins
+BEGIN
+dbms_output.put_line('Wander Cepeda Lab 9' || chr(10));
+dbms_output.put_line('  #     ' || 'Order Date   ' || 'Ship Date        ' || '   Company        ' || '       Country ' || chr(10));
+-- Execute the SELECT
+OPEN Wander_lab9;
+    -- Retrieve each row from the resultset in a loop
+    LOOP
+        FETCH Wander_lab9 into o_ID, o_oDate, o_sDate, c_CompanyName, o_shipCountry;
+        -- End of resultset reached
+        EXIT WHEN Wander_lab9%notfound;
+        -- Dump out Data
+        dbms_output.put_line(o_ID || '   ' ||  o_oDate || '   ' || o_sDate || '   ' || c_CompanyName || '             ' || o_shipCountry);
+    END LOOP;
+-- Close cursor
+CLOSE Wander_lab9;
+END;

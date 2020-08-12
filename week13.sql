@@ -1,4 +1,4 @@
---.sql//
+--sql//
 
 -- Practicum Answers started week 13
 

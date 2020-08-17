@@ -171,3 +171,70 @@ group by o.orderid;
 
 SELECT COMPANYNAME FROM CUSTOMERS
 WHERE 'LILAS' = CUSTOMERID;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- arjidners old version
+-- another version
+
+CREATE OR REPLACE PACKAGE BODY practicum2_pkg AS
+PROCEDURE p_get_orders_for_cust(cust_in IN customers.CustomerId%type) IS
+o_id NUMBER(22,0);
+o_date orders.orderDate%type;
+o_status VARCHAR2(15);
+od_total VARCHAR2(20);
+real_date date;
+CURSOR c_cursor IS
+SELECT o.orderId, o.orderDate, NVL2(o.shippeddate, 'shipped', 'not shipped'), SUM((od.unitprice * od.quantity) * (1-od.discount)) FROM orders o
+INNER JOIN orderDetails od ON o.orderid = od.orderid
+WHERE cust_in = o.customerid
+group BY o.orderId, o.orderDate;
+BEGIN
+SELECT TO_CHAR(sysdate, 'DD/MON/YYYY') INTO real_date FROM dual;
+dbms_output.put_line('Statistics for ' || get_cust_name(cust_in) || ' ' || real_date || ' - Tadjiev Muhammad' || CHR(10) || CHR(10));
+dbms_output.put_line('Order #' || '       ' || 'Date' || '       ' || 'Status' || '       ' || 'Order Total' || CHR(10) || CHR(10));
+OPEN c_cursor;
+LOOP
+FETCH c_cursor INTO o_id, o_date, o_status, od_total;
+EXIT WHEN c_cursor%notfound;
+dbms_output.put_line(o_id || '       ' || o_date || '       ' || o_status || '       ' || '$' || od_total || CHR(10));
+END LOOP;
+CLOSE c_cursor;
+dbms_output.put_line(CHR(10) || 'Avg. order amount for customer:    ' || get_agv_order_amount(cust_in) || CHR(10));
+dbms_output.put_line(CHR(10) || 'Avg. order amount for company:     ' || get_agv_company(cust_in) || CHR(10));
+dbms_output.put_line(CHR(10) || '# of orders for this customer:     ' || get_number_orders(cust_in));
+END; 
+

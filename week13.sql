@@ -9,7 +9,7 @@
 CREATE OR REPLACE package PRACTICUM_PKG AS
 PROCEDURE p_get_orders_for_cust(cust_in IN customers.CustomerId%type);
 FUNCTION get_cust_name (cust_in IN customers.CustomerId%type) RETURN VARCHAR2;
-FUNCTION get_agv_order_amount (cust_in IN customers.CustomerId%type) RETURN VARCHAR2;
+FUNCTION get_avg_order_amount (cust_in IN customers.CustomerId%type) RETURN VARCHAR2;
 END PRACTICUM_PKG;
 
 
